@@ -1,0 +1,58 @@
+{
+  "google": {
+    "base": "maps.googleapis.com/maps/api/geocode/json",
+    "lat": "results[0].geometry.location.lat",
+    "lon": "results[0].geometry.location.lng",
+    "addressParam": "address",
+    "keyRequired": false,
+    "params": {
+      "sensor": false
+    }
+  },
+  "bing": {
+    "base": "dev.virtualearth.net/REST/v1/Locations",
+    "keyRequired": true,
+    "addressParam": "q",
+    "lat": "resourceSets[0].resources[0].geocodePoints[0].coordinates[0]",
+    "lon": "resourceSets[0].resources[0].geocodePoints[0].coordinates[1]"
+  },
+  "mapquest": {
+    "base": "open.mapquestapi.com/geocoding/v1/address",
+    "addressParam": "location",
+    "lat": "results[0].locations[0].latLng.lat",
+    "lon": "results[0].locations[0].latLng.lon",
+    "keyRequired": false
+  },
+  "nominatim": {
+    "base": "nominatim.openstreetmap.org/search",
+    "lat": "[0]lat",
+    "lon": "[0]lon",
+    "addressParam": "q",
+    "keyRequired": false,
+    "params": {
+      "format": "json"
+    }
+  },
+  "yandex": {
+    "base": "geocode-maps.yandex.ru/1.x/",
+    "addressParam": "geocode",
+    "lat": "data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ')[0]",
+    "lon": "data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ')[1]",
+    "keyRequired": true,
+    "params": {
+      "format": "json",
+      "plng": "uk"
+    }
+  },
+  "geocoderCa": {
+    "base": "geocoder.ca",
+    "addressParam": "locate",
+    "lat": "parseFloat(latt)",
+    "lon": "parseFloat(longt)",
+    "keyRequired": false,
+    "params": {
+      "jsonp": "1",
+      "geoit": "xml"
+    }
+  }
+}
