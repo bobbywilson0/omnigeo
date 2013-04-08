@@ -64,8 +64,8 @@ Geocoder.prototype.traverse = function(data) {
   d = JSON.parse(data);
 
   return {
-    lat: eval('d.' + s.lat),
-    lon: eval('d.' + s.lon),
+    lat: eval('d' + s.lat),
+    lon: eval('d' + s.lon),
     service: this.service
   }
 }
