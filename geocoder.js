@@ -73,7 +73,3 @@ Geocoder.prototype.traverse = function(data) {
 Geocoder.prototype.geocode = function(address, opts, callback) {
   geocoder.perform(geocoder.buildUrl(address), callback);
 };
-
-function unifiedOutput(result, service) {
-  return {lat: result.lat, lng: result.lng, service: service}
-}
