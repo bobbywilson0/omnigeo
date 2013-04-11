@@ -5,22 +5,23 @@ var querystring = require('querystring');
 var services =  require('./services.json');
 var keys =  require('./keys.json');
 
-exports = module.exports = Geocoder;
+exports = module.exports = function(opts) {
+  if (!opts) opts = {};
+  if (opts.protocol === undefined) opts.protocol = 'http';
+  if (opts.service === undefined) opts.service = 'google';
 
-function Geocoder(opts) {
-  for(var attr in opts) {
-    if(opts.hasOwnProperty(attr)) {
-     this[attr] = opts[attr];
-    }
-  }
+  return new Geocoder(opts);
 }
 
-Geocoder.prototype.url = function() {};
-Geocoder.prototype.protocol = "http";
-Geocoder.prototype.service = "google";
+function Geocoder(opts) {
+  this.protocol = opts.protocol;
+  this.service = opts.service;
+}
 
-Geocoder.prototype.perform = function(url, callback) {
-  var protocol = this.protocol === 'https' ? https : http;
+Geocoder.prototype.geocode = function(address, callback) {
+  var self = this;
+  var protocol = self.protocol === 'https' ? https : http;
+  var url = self._buildUrl(address);
 
   protocol.get(url, function(res) {
 
@@ -31,7 +32,7 @@ Geocoder.prototype.perform = function(url, callback) {
     });
 
     res.on('end', function(err) {
-      callback(data);
+      self._traverse(data, callback);
     });
 
     res.on('error', function(err) {
@@ -41,7 +42,7 @@ Geocoder.prototype.perform = function(url, callback) {
 
 };
 
-Geocoder.prototype.buildUrl = function(address) {
+Geocoder.prototype._buildUrl = function(address) {
   var s = services[this.service];
   var url = [this.protocol, "://", s.base, "?", s.addressParam, "=",
     address]
@@ -59,17 +60,13 @@ Geocoder.prototype.buildUrl = function(address) {
   return url.join('');
 }
 
-Geocoder.prototype.traverse = function(data) {
+Geocoder.prototype._traverse = function(data, callback) {
   s = services[this.service];
   d = JSON.parse(data);
 
-  return {
+  callback({
     lat: eval('d' + s.lat),
     lon: eval('d' + s.lon),
     service: this.service
-  }
+  })
 }
-
-Geocoder.prototype.geocode = function(address, opts, callback) {
-  geocoder.perform(geocoder.buildUrl(address), callback);
-};
