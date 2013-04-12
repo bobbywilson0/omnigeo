@@ -3,12 +3,12 @@ var https = require('https');
 var querystring = require('querystring');
 
 var services =  require('./services.json');
-var keys =  require('./keys.json');
 
 exports = module.exports = function(opts) {
   if (!opts) opts = {};
   if (opts.protocol === undefined) opts.protocol = 'http';
   if (opts.service === undefined) opts.service = 'google';
+  if (opts.api_key === undefined) opts.api_key = '';
 
   return new Geocoder(opts);
 }
@@ -16,6 +16,7 @@ exports = module.exports = function(opts) {
 function Geocoder(opts) {
   this.protocol = opts.protocol;
   this.service = opts.service;
+  this.api_key = opts.api_key;
 }
 
 Geocoder.prototype.geocode = function(address, callback) {
@@ -54,19 +55,18 @@ Geocoder.prototype._buildUrl = function(address) {
 
   if (s.keyRequired === true) {
     url.push("&key=");
-    url.push(keys[this.service]);
+    url.push(this.api_key);
   }
-
   return url.join('');
 }
 
 Geocoder.prototype._traverse = function(data, callback) {
   s = services[this.service];
-  d = JSON.parse(data);
+  response = JSON.parse(data);
 
   callback({
-    lat: eval('d' + s.lat),
-    lon: eval('d' + s.lon),
+    lat: eval(s.lat),
+    lon: eval(s.lon),
     service: this.service
   })
 }
