@@ -1,0 +1,26 @@
+{
+  "name": "omni-geo",
+  "version": "0.0.1",
+  "description": "Node geocoder with pluggable geocoding services.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "~1.9.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/bobbyw/omni-geo.git"
+  },
+  "keywords": [
+    "geocode"
+  ],
+  "author": "Bobby Wilson",
+  "license": "BSD",
+  "gitHead": "393e902dfc4b1b2a226dd907e6634b770471b76a"
+}
