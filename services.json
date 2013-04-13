@@ -49,5 +49,11 @@
       "jsonp": "1",
       "geoit": "xml"
     }
+  },
+  "dataScienceToolkit": {
+    "base": "www.datasciencetoolkit.org/maps/api/geocode/json",
+    "addressParam": "address",
+    "lat": "response.results[0].geometry.location.lat",
+    "lon": "response.results[0].geometry.location.lng"
   }
 }

@@ -61,8 +61,8 @@ Geocoder.prototype._buildUrl = function(address) {
 }
 
 Geocoder.prototype._traverse = function(data, callback) {
-  s = services[this.service];
-  response = JSON.parse(data);
+  var s = services[this.service];
+  var response = JSON.parse(data);
 
   callback({
     lat: eval(s.lat),
