@@ -1,6 +1,6 @@
-var http = require('http');
-var https = require('https');
-var querystring = require('querystring');
+var http = require('http'),
+    https = require('https'),
+    querystring = require('querystring');
 
 var services =  require('./services.json');
 
