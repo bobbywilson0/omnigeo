@@ -11,7 +11,7 @@ exports = module.exports = function(opts) {
   if (opts.api_key === undefined) opts.api_key = '';
 
   return new Geocoder(opts);
-}
+};
 
 function Geocoder(opts) {
   this.protocol = opts.protocol;
@@ -46,7 +46,7 @@ Geocoder.prototype.geocode = function(address, callback) {
 Geocoder.prototype._buildUrl = function(address) {
   var s = services[this.service];
   var url = [this.protocol, "://", s.base, "?", s.addressParam, "=",
-    address]
+    address];
 
   if (s.params) {
     url.push("&");
@@ -58,7 +58,7 @@ Geocoder.prototype._buildUrl = function(address) {
     url.push(this.api_key);
   }
   return url.join('');
-}
+};
 
 Geocoder.prototype._traverse = function(data, callback) {
   var s = services[this.service];
@@ -68,5 +68,5 @@ Geocoder.prototype._traverse = function(data, callback) {
     lat: eval(s.lat),
     lon: eval(s.lon),
     service: this.service
-  })
-}
+  });
+};
