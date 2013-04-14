@@ -8,13 +8,6 @@
       "sensor": false
     }
   },
-  "bing": {
-    "base": "dev.virtualearth.net/REST/v1/Locations",
-    "keyRequired": true,
-    "addressParam": "q",
-    "lat": "response.resourceSets[0].resources[0].geocodePoints[0].coordinates[0]",
-    "lon": "response.resourceSets[0].resources[0].geocodePoints[0].coordinates[1]"
-  },
   "mapquest": {
     "base": "open.mapquestapi.com/geocoding/v1/address",
     "addressParam": "location",
