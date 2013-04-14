@@ -1,7 +1,7 @@
 {
   "name": "omnigeo",
   "version": "0.0.1",
-  "description": "Node geocoder with pluggable geocoding services.",
+  "description": "node.js geocoder with pluggable geocoding services.",
   "main": "index.js",
   "directories": {
     "test": "test"
