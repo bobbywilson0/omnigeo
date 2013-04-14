@@ -1,4 +1,4 @@
-var http = require('http'),
+  var http = require('http'),
     https = require('https'),
     querystring = require('querystring')
 
@@ -69,9 +69,5 @@ Geocoder.prototype._traverse = function(data, callback) {
         service: this.service
       }
 
-  if (callback) {
-    callback(result)
-  } else {
-    return result
-  }
+  if (callback) callback(result)
 }
