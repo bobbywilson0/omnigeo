@@ -1,13 +1,13 @@
 var assert = require('assert')
-var geocoder = require('../google')
+var geocoder = require('../bing')
 
 var whitehouseAddress = '1600 Pennsylvania Ave., Washington D.C.'
 
-describe('google', function() {
+describe('bing', function() {
   it('fetches the latitude and longitude', function(done) {
     geocoder(whitehouseAddress, function(err, res) {
-      assert.equal(res.lat, 38.897096)
-      assert.equal(res.lon, -77.03654499999999)
+      assert.equal(res.lat, 38.8986799120903)
+      assert.equal(res.lon, -77.03597456216812)
 
       done()
     })

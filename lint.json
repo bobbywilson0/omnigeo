@@ -1,6 +1,5 @@
 {
   "node": true,
-  "evil": true,
   "asi": true,
   "strict": false
 }
