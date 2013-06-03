@@ -1,13 +1,14 @@
 var assert = require('assert')
-var geocoder = require('../geocoderCa')
+var omnigeo = require('..')({ service: 'geocoderCa' })
 
 var nyc = 'New York, New York'
 
-describe('google', function() {
+describe('geocoderCa', function() {
   it('fetches the latitude and longitude', function(done) {
-    geocoder(nyc, function(err, res) {
+    omnigeo.geocode(nyc, function(err, res) {
+      assert.ifError(err)
       assert.equal(res.lat, 43.076676)
-      assert.equal(res.lon, -76.865364)
+      assert.equal(res.lng, -76.865364)
 
       done()
     })
