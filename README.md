@@ -13,7 +13,7 @@ var omnigeo = require('omnigeo')
 
 omnigeo().geocode('New York, NY', function(res) {
   console.log(res)
-  // { lat: 40.71, lon: -74.00 }
+  // { lat: 40.71, lng: -74.00 }
 }
 ```
 
@@ -21,7 +21,7 @@ Defining a service:
 ```javascript
 omnigeo({service: 'mapquest'}).geocode('New York, NY', function(res) {
   console.log(res)
-  // { lat: 40.71, lon: -74.00 }
+  // { lat: 40.71, lng: -74.00 }
 }
 ```
 
