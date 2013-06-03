@@ -12,7 +12,8 @@
     "jshint": "~2.1.3"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node_modules/.bin/mocha",
+    "lint": "node_modules/.bin/jshint *.js ./test/*.js"
   },
   "repository": {
     "type": "git",
